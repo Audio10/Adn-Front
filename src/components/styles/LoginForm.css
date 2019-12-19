@@ -69,10 +69,13 @@ button{
 }
 
 @media screen and (max-width: 768px) {
+    .formulario{
+        margin-top: 40px;
+    }
 
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 426px) {
     .circulo--izquierdo {
         display: none;
     }
@@ -82,18 +85,22 @@ button{
     .circulo--medio {
         display: none;
     }
-    .formulario--izquierda {
-        display: inline-block;
-        text-align: center;
+
+    .formulario__button--position {
+        bottom: -85px;
     }
 
     .formulario__input {
-        width: 400px;
+        width: 250px;
     }
 
     .formulario {
         border: solid black 1px;
+        width: 600px;
+        height: 300px;
     }
+
+    
 
 }
 

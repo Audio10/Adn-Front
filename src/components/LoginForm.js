@@ -36,7 +36,7 @@ export default class LoginForm extends Component {
               value={this.props.formValues.password}
             />
           </div>
-          
+        
           <div className="col-12 formulario__button--position">
             <button
               type="submit"

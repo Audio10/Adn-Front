@@ -91,7 +91,7 @@
     }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 426px) {
     .circulo--izquierdo {
         display: none;
     }
@@ -104,4 +104,6 @@
     
 }
 
-@media screen and (max-width: 320px) {}
+@media screen and (max-width: 320px) {
+
+}
