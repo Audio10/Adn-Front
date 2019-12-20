@@ -21,7 +21,7 @@
 }
 
 .formulario--centra {
-    padding-top: 50%;
+    margin-top: 10%;
 }
 
 button{
@@ -36,7 +36,7 @@ button{
 
 .formulario__button--position {
     position: relative;
-    bottom: -105px;
+    bottom: -95px;
 }
 
 @media screen and (max-width: 1440px) {
@@ -87,7 +87,8 @@ button{
     }
 
     .formulario__button--position {
-        bottom: -85px;
+        position: absolute;
+        bottom: -15px;
     }
 
     .formulario__input {
@@ -98,10 +99,11 @@ button{
         border: solid black 1px;
         width: 600px;
         height: 300px;
-    }
-
-    
-
+    }  
 }
 
-@media screen and (max-width: 320px) {}
+@media screen and (max-width: 320px) {
+    .formulario--centra {
+        margin-top: 15%;
+    }
+}

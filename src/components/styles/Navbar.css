@@ -1,0 +1,29 @@
+.button__position {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar__color {
+    background-color: blue;
+    padding: 20px;
+}
+
+button {
+    border-radius: 25px;
+    background-color: teal;
+    width: 200px;
+    height: 30px;
+    margin-top: 20px;
+    border: none;
+    opacity: .6;
+    text-decoration: none;
+    color: white;
+    
+}
+
+.redondeado {
+    background-color: blue;
+    height: 150px;
+    border-bottom-left-radius: 50px 40px;
+    border-bottom-right-radius: 50px 40px;
+}

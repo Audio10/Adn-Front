@@ -1,19 +1,24 @@
 import React, { Component } from "react";
 import Header from "../components/Header";
 import PageLoading from "../components/PageLoading";
+import Navbar from "../components/Navbar";
 import ItemList from "../components/ItemList";
 import "./styles/Home.css";
 
 const axios = require("axios").default;
 
 export default class Home extends Component {
-  state = {
-    loading: false,
-    error: null,
-    data: [
-      {}
-    ]
-  };
+  
+  constructor() {
+    super()
+    this.state = {
+      loading: false,
+      error: null,
+      data: [
+        {}
+      ]
+    };
+  }
 
   componentDidMount() {
     this.fetchData();
@@ -27,14 +32,11 @@ export default class Home extends Component {
         .get("http://adnbwl.us-east-2.elasticbeanstalk.com/mutation/all")
         .then(function(response) {
           data = response.data;
-          console.log(data);
         });
       this.setState({ data: data, loading: false });
     } catch (error) {
       this.setState({ loading: false, error: error });
     }
-
-    console.log(this.state.data);
   };
 
   fetchDataN = async () => {
@@ -50,14 +52,11 @@ export default class Home extends Component {
     } catch (error) {
       this.setState({ loading: false, error: error });
     }
-
-    console.log(this.state.data);
   };
 
   fetchDataM = async () => {
     this.setState({ loading: true, error: null });
     let data;
-    console.log("...");
     try {
       await axios
         .get("http://adnbwl.us-east-2.elasticbeanstalk.com/mutation/conmutation")
@@ -69,8 +68,6 @@ export default class Home extends Component {
     } catch (error) {
       this.setState({ loading: false, error: error });
     }
-
-    console.log(this.state.data);
   };
 
   handleClickN = e => {
@@ -90,37 +87,17 @@ export default class Home extends Component {
   handleClickE = e => {
     console.log('Nuevo');
   };
+
   render() {
+
     if (this.state.loading === true && !this.state.data) {
       return <PageLoading />;
     }
 
     return (
       <React.Fragment>
-        <div className="container-superior">
-          <Header />
-
-          <div className="container-fluid row">
-            <div className="col-3 item">
-              <button className="nav__button" onClick={this.handleClickN}> Nuevo humano </button>
-            </div>
-            <div className="col-3 item">
-              <button className="nav__button" onClick={this.handleClickE}> Analizar Humano </button>
-            </div>
-            <div className="col-3 item">
-              <button className="nav__button" onClick={this.handleClickM}> Con Mutacion </button>
-            </div>
-            <div className="col-3 item">
-              <button className="nav__button" onClick={this.handleClickSM}> Sin Mutacion </button>
-            </div>
-          </div>
-
-          <ItemList  items={this.state.data} />
-
-
-        </div>
-
-        
+          <Header/>   
+          <Navbar/>     
       </React.Fragment>
     );
   }

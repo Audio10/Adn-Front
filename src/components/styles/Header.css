@@ -1,8 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap');
+
+.titulo__font{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 38px;
+    font-weight: bold;
+    color: white;
+}
+
+.header {
+    padding: 20px;
+}
+
+.header__izquierda{
+}
+
 .header__derecha {
     display: flex;
     justify-content: flex-end;
 }
 
-.row {
-    padding-top: 40px;
+.container__color {
+    background-color: blue;
 }
