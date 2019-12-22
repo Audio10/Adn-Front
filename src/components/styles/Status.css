@@ -1,0 +1,28 @@
+.Estatus__Container {
+    height: 70vh;
+}
+
+.Estatus__Data{
+    padding-bottom: 30%;
+}
+
+.Estatus__titulo h1{
+    text-align: center;
+    padding-bottom: 100px;
+}
+
+.Estatus__Container div{
+    padding-top: 60px;
+    text-align: center;
+}
+
+@media screen and (max-width: 990px) {
+    .Estatus__Container {
+        padding-top: 25%;
+    }
+
+}
+
+
+
+

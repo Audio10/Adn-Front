@@ -3,38 +3,50 @@ import "./styles/Item.css";
 import "./styles/ItemList.css";
 
 class Item extends React.Component {
+
+  constructor() {
+    super()
+    this.state = {
+      name: "",
+      created: ""
+    }
+  }
+
   render() {
     return (
       <div className="Item">
-        <div className="row">
-          <div className="col-4 Item__Circulo">
-            <div className="Item__Circulo--forma"> </div>
-          </div>
-          <div className="col-8 Item__Info">
-            <p className="Item__Name"> {this.props.info.sequence} </p>
-            <p className="Item__Creado">Creado en: {this.props.info.created } </p>
+        <div className="Item__imagen">
+          {this.props.info.mutation ===true ? <div id="circulo" className="Item__Circulo__ConMutacion"> </div> : <div id="circulo" className="Item__Circulo__SinMutacion"> </div>} 
+        </div>
+        <div className="Item__info">
+          <div>
+            <p className="Item__Name"> {this.props.info.humano && this.props.info.humano.name!=="" ? this.props.info.humano.name : "Humano " + this.props.contador} </p>
+            <p className="Item__Creado">Creado en: {(this.props.info.created != null) && this.props.info.created.substring(0, 10).replace("-", "/").replace("-", "/")} </p>
           </div>
         </div>
 
-        <div className="col-12 Item__Muta">
-          <p> { this.props.info.mutation === true ? "Con Mutacion" : "Sin Mutacion"}</p>
+        <div className="Item__mutation">
+          <p> {this.props.info.mutation === true ? "Con Mutacion" : "Sin Mutacion"}</p>
         </div>
       </div>
+      
     );
+    
   }
 }
 
 class ItemList extends React.Component {
+
   render() {
     return (
-      <div className="row">
-        {this.props.items.map(item => {
-          return (
-            <div className="col-4">
-              <Item info={item} />
-            </div>
-          );
-        })}
+      <div className="container-fluid ItemList__Container">
+        <div className="wrapper">
+          {this.props.items.map((item, index) => {
+            return (
+                <Item key={index} info={item} contador={index + 1} />
+            );
+          })}
+        </div>
       </div>
     );
   }

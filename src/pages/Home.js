@@ -1,21 +1,25 @@
-import React, { Component } from "react";
-import Header from "../components/Header";
-import PageLoading from "../components/PageLoading";
-import Navbar from "../components/Navbar";
-import ItemList from "../components/ItemList";
-import "./styles/Home.css";
+import React, { Component } from "react"
+import PageLoading from "../components/PageLoading"
+import ItemList from "../components/ItemList"
+import "./styles/Home.css"
+import Header from "../components/Header"
+import ModalCreate from "../components/ModalCreate"
+import Status from '../components/Status'
 
 const axios = require("axios").default;
 
 export default class Home extends Component {
-  
+
   constructor() {
     super()
     this.state = {
       loading: false,
       error: null,
+      modalIsOpen: false,
+      modal: {},
+      status: false,
       data: [
-        {}
+
       ]
     };
   }
@@ -30,7 +34,7 @@ export default class Home extends Component {
     try {
       await axios
         .get("http://adnbwl.us-east-2.elasticbeanstalk.com/mutation/all")
-        .then(function(response) {
+        .then(function (response) {
           data = response.data;
         });
       this.setState({ data: data, loading: false });
@@ -45,7 +49,7 @@ export default class Home extends Component {
     try {
       await axios
         .get("http://adnbwl.us-east-2.elasticbeanstalk.com/mutation/sinmutation")
-        .then(function(response) {
+        .then(function (response) {
           data = response.data;
         });
       this.setState({ data: data, loading: false });
@@ -60,9 +64,8 @@ export default class Home extends Component {
     try {
       await axios
         .get("http://adnbwl.us-east-2.elasticbeanstalk.com/mutation/conmutation")
-        .then(function(response) {
+        .then(function (response) {
           data = response.data;
-          console.log(data);
         });
       this.setState({ data: data, loading: false });
     } catch (error) {
@@ -70,23 +73,54 @@ export default class Home extends Component {
     }
   };
 
-  handleClickN = e => {
-    
-  };
+  CreateHumano() {
+    axios.post('http://adnbwl.us-east-2.elasticbeanstalk.com/humano', {
+      name: this.state.modal.nombre
+    }).then(response => {
+
+    }).catch(e => {
+      console.log(e);
+    });
+  }
 
   handleClickM = e => {
-    console.log('CON MUTATION')
+    this.setState({ status: false })
     this.fetchDataM()
   };
 
   handleClickSM = e => {
-    console.log('SIN MUTACION');
+    this.setState({ status: false })
     this.fetchDataN()
   };
 
   handleClickE = e => {
-    console.log('Nuevo');
+    this.setState({ status: true })
   };
+
+  handleCloseModal = e => {
+    this.setState({ status: false })
+    this.setState({ modalIsOpen: false })
+    this.fetchData();
+  }
+
+  handleOpenModal = e => {
+    this.setState({ modalIsOpen: true })
+  }
+
+  handleCreateModal = e => {
+
+    this.CreateHumano()
+    this.handleCloseModal()
+    this.fetchData();
+  }
+
+  handleChanche = e => {
+    this.setState({
+      modal: {
+        [e.target.name]: e.target.value
+      }
+    })
+  }
 
   render() {
 
@@ -96,9 +130,46 @@ export default class Home extends Component {
 
     return (
       <React.Fragment>
-          <Header/>   
-          <Navbar/>     
+        <Header />
+
+        <div className="container-fluid">
+          <div className="row navbar__color">
+
+            <div className="col-md-6 col-lg-3  button__position">
+              <div className="opaco">
+                <button onClick={this.handleOpenModal} className="button__style" to="/humanos"> Humano </button>
+              </div>
+
+              <ModalCreate isOpen={this.state.modalIsOpen} onCreate={this.handleCreateModal} onChange={this.handleChanche} onClose={this.handleCloseModal} />
+            </div>
+            <div className="col-md-6 col-lg-3 button__style button__position">
+              <div className="opaco">
+                <button className="button__style" to="/estado" onClick={this.handleClickE}> Estado </button>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-3 button__style button__position">
+              <div className="opaco">
+                <button onClick={this.handleClickM} className="button__style" to="/mutaciones"> Mutaciones </button>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-3 button__style button__position">
+              <div className="opaco">
+                <button onClick={this.handleClickSM} className="button__style" to="/sinmutaciones"> Sin Mutaciones </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="redondeado"></div>
+
+        <div className="container-fluid container__position">
+
+          {this.state.status === false ? <ItemList items={this.state.data} /> : <Status />}
+        </div>
+
       </React.Fragment>
+
     );
+
   }
 }

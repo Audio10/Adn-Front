@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import "./styles/LoginForm.css";
+
 export default class LoginForm extends Component {
 
   handleClick = e => {
-    console.log("Button was clicked");
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("Form was submitted");
   };
 
   render() {
