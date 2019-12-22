@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import "./styles/Login.css";
 import LoginForm from "../components/LoginForm";
+import "./styles/Login.css";
+
 const axios = require('axios').default;
 
 export default class Login extends Component {

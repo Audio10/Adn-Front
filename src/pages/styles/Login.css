@@ -51,10 +51,41 @@
     opacity: 0.4;
 }
 
+@media screen and (max-width: 1440px) {
+    .circulo--izquierdo {
+        bottom: 25%;
+        left: -20em;
+        width: 35em !important;
+        height: 35em !important;
+    }
+    
+    .circulo--arriba {
+        top: -15%;
+        left: 14.5em;
+    }
+    
+    .circulo--medio {
+        background: #5f94e0 !important;
+        bottom: 52%;
+        left: 12.5rem;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .formulario--izquierda {
         justify-content: center;
     }
+}
+
+@media screen and (max-width: 560px) {
+    .circulo--arriba {
+        
+        width: 16em !important;
+        height: 16em !important;
+        top: -15%;
+        left: 10.5em;
+    }
+    
 }
 
 @media screen and (max-width: 426px) {

@@ -3,9 +3,6 @@ import "./styles/LoginForm.css";
 
 export default class LoginForm extends Component {
 
-  handleClick = e => {
-  };
-
   handleSubmit = e => {
     e.preventDefault();
   };

@@ -1,10 +1,10 @@
 import React, { Component } from "react"
 import PageLoading from "../components/PageLoading"
 import ItemList from "../components/ItemList"
-import "./styles/Home.css"
 import Header from "../components/Header"
 import ModalCreate from "../components/ModalCreate"
 import Status from '../components/Status'
+import "./styles/Home.css"
 
 const axios = require("axios").default;
 
