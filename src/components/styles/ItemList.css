@@ -1,4 +1,4 @@
-.ItemList__Container {
+.itemlist__container {
     display: flex;
     justify-content: center;
 }
@@ -27,7 +27,7 @@
         
     }
 
-    .ItemList__Container {
+    .itemlist__container {
         padding-top: 20%;
     }
 

@@ -10,9 +10,9 @@ function Modal(props) {
     return (
         ReactDOM.createPortal(
             (
-                <div className="Modal">
-                    <div className="Modal__container">
-                        <button onClick={props.onClose} className="Modal__close-button">
+                <div className="modal">
+                    <div className="modal__container">
+                        <button onClick={props.onClose} className="modal__button--close">
                             X
                         </button>
 

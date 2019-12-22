@@ -31,6 +31,9 @@ export default class LoginForm extends Component {
               placeholder="Password"
               value={this.props.formValues.password}
             />
+            <div className="error__message">
+            { this.props.error && <p> Verifica tu usuario y password.</p>}
+            </div>
           </div>
         
           <div className="col-12 formulario__button--position">

@@ -5,19 +5,14 @@
     background-color: blue;
   }
 
-  .Modal__circulo{
+  .modal__circulo{
       height: 100px;
       display: flex;
       justify-content: center;
       align-items: center;
   }
-
-  .Modal__input__container{
-      display: flex;
-      justify-content: center;
-  }
-
-  .Modal__input{
+  
+  .modal__input{
     width: 330px;
     border-top: none;
     border-left: none;
@@ -27,19 +22,24 @@
     outline:0px;
   }
 
-  .Modal__button__container{
-      height: 150px;
+  .modal__input__container{
       display: flex;
       justify-content: center;
-      align-items: flex-end;
-
   }
-
-  .Modal__button {
+  
+  .modal__button {
     height: 40px;
     background-color: orange;
     width: 150px;
     border-radius: 15px;
     font-weight: bold;
     
+  }
+
+  .modal__button__container{
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+
   }

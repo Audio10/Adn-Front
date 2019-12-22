@@ -14,18 +14,18 @@ class Item extends React.Component {
 
   render() {
     return (
-      <div className="Item">
-        <div className="Item__imagen">
-          {this.props.info.mutation ===true ? <div id="circulo" className="Item__Circulo__ConMutacion"> </div> : <div id="circulo" className="Item__Circulo__SinMutacion"> </div>} 
+      <div className="item">
+        <div className="item__imagen">
+          {this.props.info.mutation ===true ? <div id="circulo" className="item__circulo--conmutacion"> </div> : <div id="circulo" className="item__circulo--sinmutacion"> </div>} 
         </div>
-        <div className="Item__info">
+        <div className="item__info">
           <div>
-            <p className="Item__Name"> {this.props.info.humano && this.props.info.humano.name!=="" ? this.props.info.humano.name : "Humano " + this.props.contador} </p>
-            <p className="Item__Creado">Creado en: {(this.props.info.created != null) && this.props.info.created.substring(0, 10).replace("-", "/").replace("-", "/")} </p>
+            <p className="item__name"> {this.props.info.humano && this.props.info.humano.name!=="" ? this.props.info.humano.name : "Humano " + this.props.contador} </p>
+            <p>Creado en: {(this.props.info.created != null) && this.props.info.created.substring(0, 10).replace("-", "/").replace("-", "/")} </p>
           </div>
         </div>
 
-        <div className="Item__mutation">
+        <div className="item--mutation">
           <p> {this.props.info.mutation === true ? "Con Mutacion" : "Sin Mutacion"}</p>
         </div>
       </div>
@@ -39,7 +39,7 @@ class ItemList extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid ItemList__Container">
+      <div className="container-fluid itemlist__container">
         <div className="wrapper">
           {this.props.items.map((item, index) => {
             return (

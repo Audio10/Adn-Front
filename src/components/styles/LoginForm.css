@@ -33,7 +33,13 @@
 
 .formulario__button--position {
     position: relative;
-    bottom: -90px;
+    bottom: -65px;
+}
+
+.error__message {
+    color: blue;
+    padding-top: 5px;
+    height: 30px;
 }
 
 @media screen and (max-width: 768px) {

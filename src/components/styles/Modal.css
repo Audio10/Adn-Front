@@ -1,4 +1,4 @@
-.Modal {
+.modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-.Modal__container {
+.modal__container {
   position: relative;
   top: 15rem;
   border-radius: 10px;
@@ -20,7 +20,7 @@
   width: 400px;
 }
 
-.Modal__close-button {
+.modal__button--close {
   border-top-right-radius: 10px;
   position: absolute;
   top: 0;
@@ -32,7 +32,7 @@
 }
 
 @media screen and (max-width: 425px) {
-  .Modal__container{
+  .modal__container{
     width: 300px;
   }
 }

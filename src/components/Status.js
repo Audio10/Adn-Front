@@ -37,9 +37,9 @@ export default class Status extends Component {
 
     render() {
         return (
-            <div className="container Estatus__Container">
-                <div className="row Estatus__Data">
-                    <div className="col-12 Estatus__titulo">
+            <div className="container estatus__container">
+                <div className="row estatus__data">
+                    <div className="col-12 estatus__titulo">
                         <h1>ADN detector</h1>
                     </div>
                     <div className="col-sm-12 col-md-6">

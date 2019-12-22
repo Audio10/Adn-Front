@@ -1,26 +1,23 @@
-import React, { Component } from "react"
-import PageLoading from "../components/PageLoading"
-import ItemList from "../components/ItemList"
-import Header from "../components/Header"
-import ModalCreate from "../components/ModalCreate"
-import Status from '../components/Status'
-import "./styles/Home.css"
+import React, { Component } from "react";
+import PageLoading from "../components/PageLoading";
+import ItemList from "../components/ItemList";
+import Header from "../components/Header";
+import ModalCreate from "../components/ModalCreate";
+import Status from "../components/Status";
+import "./styles/Home.css";
 
 const axios = require("axios").default;
 
 export default class Home extends Component {
-
   constructor() {
-    super()
+    super();
     this.state = {
       loading: false,
       error: null,
       modalIsOpen: false,
       modal: {},
       status: false,
-      data: [
-
-      ]
+      data: []
     };
   }
 
@@ -34,7 +31,7 @@ export default class Home extends Component {
     try {
       await axios
         .get("http://adnbwl.us-east-2.elasticbeanstalk.com/mutation/all")
-        .then(function (response) {
+        .then(function(response) {
           data = response.data;
         });
       this.setState({ data: data, loading: false });
@@ -48,8 +45,10 @@ export default class Home extends Component {
     let data;
     try {
       await axios
-        .get("http://adnbwl.us-east-2.elasticbeanstalk.com/mutation/sinmutation")
-        .then(function (response) {
+        .get(
+          "http://adnbwl.us-east-2.elasticbeanstalk.com/mutation/sinmutation"
+        )
+        .then(function(response) {
           data = response.data;
         });
       this.setState({ data: data, loading: false });
@@ -63,8 +62,10 @@ export default class Home extends Component {
     let data;
     try {
       await axios
-        .get("http://adnbwl.us-east-2.elasticbeanstalk.com/mutation/conmutation")
-        .then(function (response) {
+        .get(
+          "http://adnbwl.us-east-2.elasticbeanstalk.com/mutation/conmutation"
+        )
+        .then(function(response) {
           data = response.data;
         });
       this.setState({ data: data, loading: false });
@@ -74,56 +75,55 @@ export default class Home extends Component {
   };
 
   CreateHumano() {
-    axios.post('http://adnbwl.us-east-2.elasticbeanstalk.com/humano', {
-      name: this.state.modal.nombre
-    }).then(response => {
-
-    }).catch(e => {
-      console.log(e);
-    });
+    axios
+      .post("http://adnbwl.us-east-2.elasticbeanstalk.com/humano", {
+        name: this.state.modal.nombre
+      })
+      .then(response => {})
+      .catch(e => {
+        console.log(e);
+      });
   }
 
   handleClickM = e => {
-    this.setState({ status: false })
-    this.fetchDataM()
+    this.setState({ status: false });
+    this.fetchDataM();
   };
 
   handleClickSM = e => {
-    this.setState({ status: false })
-    this.fetchDataN()
+    this.setState({ status: false });
+    this.fetchDataN();
   };
 
   handleClickE = e => {
-    this.setState({ status: true })
+    this.setState({ status: true });
   };
 
   handleCloseModal = e => {
-    this.setState({ status: false })
-    this.setState({ modalIsOpen: false })
+    this.setState({ status: false });
+    this.setState({ modalIsOpen: false });
     this.fetchData();
-  }
+  };
 
   handleOpenModal = e => {
-    this.setState({ modalIsOpen: true })
-  }
+    this.setState({ modalIsOpen: true });
+  };
 
   handleCreateModal = e => {
-
-    this.CreateHumano()
-    this.handleCloseModal()
+    this.CreateHumano();
+    this.handleCloseModal();
     this.fetchData();
-  }
+  };
 
   handleChanche = e => {
     this.setState({
       modal: {
         [e.target.name]: e.target.value
       }
-    })
-  }
+    });
+  };
 
   render() {
-
     if (this.state.loading === true && !this.state.data) {
       return <PageLoading />;
     }
@@ -133,28 +133,32 @@ export default class Home extends Component {
         <Header />
 
         <div className="container-fluid">
-          <div className="row navbar__color">
-
-            <div className="col-md-6 col-lg-3  button__position">
+          <div className="row navbar--color">
+            <div className="col-md-6 col-lg-3  button--position">
               <div className="opaco">
-                <button onClick={this.handleOpenModal} className="button__style" to="/humanos"> Humano </button>
+                <button onClick={this.handleOpenModal}> Humano </button>
               </div>
 
-              <ModalCreate isOpen={this.state.modalIsOpen} onCreate={this.handleCreateModal} onChange={this.handleChanche} onClose={this.handleCloseModal} />
+              <ModalCreate
+                isOpen={this.state.modalIsOpen}
+                onCreate={this.handleCreateModal}
+                onChange={this.handleChanche}
+                onClose={this.handleCloseModal}
+              />
             </div>
-            <div className="col-md-6 col-lg-3 button__style button__position">
+            <div className="col-md-6 col-lg-3 button__style button--position">
               <div className="opaco">
-                <button className="button__style" to="/estado" onClick={this.handleClickE}> Estado </button>
+                <button onClick={this.handleClickE}> Estado </button>
               </div>
             </div>
-            <div className="col-md-6 col-lg-3 button__style button__position">
+            <div className="col-md-6 col-lg-3 button__style button--position">
               <div className="opaco">
-                <button onClick={this.handleClickM} className="button__style" to="/mutaciones"> Mutaciones </button>
+                <button onClick={this.handleClickM}> Mutaciones </button>
               </div>
             </div>
-            <div className="col-md-6 col-lg-3 button__style button__position">
+            <div className="col-md-6 col-lg-3 button__style button--position">
               <div className="opaco">
-                <button onClick={this.handleClickSM} className="button__style" to="/sinmutaciones"> Sin Mutaciones </button>
+                <button onClick={this.handleClickSM}> Sin Mutaciones </button>
               </div>
             </div>
           </div>
@@ -162,14 +166,14 @@ export default class Home extends Component {
 
         <div className="redondeado"></div>
 
-        <div className="container-fluid container__position">
-
-          {this.state.status === false ? <ItemList items={this.state.data} /> : <Status />}
+        <div className="container-fluid container--position">
+          {this.state.status === false ? (
+            <ItemList items={this.state.data} />
+          ) : (
+            <Status />
+          )}
         </div>
-
       </React.Fragment>
-
     );
-
   }
 }
